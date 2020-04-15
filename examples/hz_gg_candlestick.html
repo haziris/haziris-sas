@@ -22,17 +22,10 @@
           .height( 0.95*window.innerHeight )
 
       google.charts.setOnLoadCallback( chart )
-         let columns = Object.keys(df[0])
-          let colLables = columns.map(
-         c=>(
-             c=='__hz__style'      ?  {role:'style'}
-           : c=='__hz__annotation' ? {role:'annotation'}
-           : c=='__hz__tooltip'    ? {role:'tooltip'}
-           : c
-         )
-       )
 
-      let data = [colLables].concat(df.map( row => ( columns.map( c => row[c] )) ))
+      let columns = Object.keys(df[0])
+
+      let data = df.map( row => ( columns.map( c => row[c] )) )
 
       function chart(){
         let chart = new google.visualization.CandlestickChart(document.getElementById('chart-div'));

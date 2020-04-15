@@ -4,7 +4,7 @@
 
 data temp;
   length StartDate EndDate $19;
-  input TaskID $ TaskName $ 10-28 StartDate $ 30-39 Days PercentComplete Dependencies $49-65;
+  input TaskID $ TaskName $ 10-28 StartDate $ 30-39 Days PercentComplete Dependencies $48-65;
   
   EndDate   = put(input(StartDate, yymmdd10.) +Days, yymmdd10.)||' 00:00:00';
   StartDate = trim(StartDate)||' 00:00:00';

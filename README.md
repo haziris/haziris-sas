@@ -49,7 +49,6 @@ datalines;
 - [Google Column Piesales Grouped](http://haziris.org/examples/haziris-sas-hz_gg_column_piesales_grouped.html)
 - [Google Column Stacked](http://haziris.org/examples/haziris-sas-hz_gg_column_stacked.html)
 - [Google Column PieSales Stacked](http://haziris.org/examples/haziris-sas-hz_gg_column_piesales_stacked.html)
-- [Google Column Stacked Full](http://haziris.org/examples/haziris-sas-hz_gg_column_stacked_full.html)
 - [Google Gantt](http://haziris.org/examples/haziris-sas-hz_gg_gantt.html)
 - [Google Gantt Grouped](http://haziris.org/examples/haziris-sas-hz_gg_gantt_grouping.html)
 - [Google Geo](http://haziris.org/examples/haziris-sas-hz_gg_geo.html)

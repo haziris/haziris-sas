@@ -11,11 +11,11 @@ datalines;
 ;
 
 data options;
-  o = "{'colors': ['#FFD700', '#C0C0C0', '#8C7853']}"; output;
+  o = "{isStacked: true}"; output;
 run;
 
 %hz_gg_column(
   intable = temp, 
-  outfile = "&hz_loc./examples/hz_gg_columnn_grouped.html",
+  outfile = "&hz_loc./examples/hz_gg_column_stacked.html",
   options = options
 );

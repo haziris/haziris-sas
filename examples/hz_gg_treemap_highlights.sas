@@ -380,7 +380,7 @@ Tybalt                                      Romeo And Juliet                    
 
 data options;
   length o $100;
-  o = "{";                                          output;
+  o = "{";                                        output;
   o = "  highlightOnMouseOver: true,";            output;
   o = "  maxDepth: 1,";                           output;
   o = "  maxPostDepth: 2,";                       output;
@@ -393,7 +393,7 @@ data options;
   o = "  headerHeight: 15,";                      output;
   o = "  showScale: true,";                       output;
   o = "  useWeightedAverageForAggregation: true"; output;
-  o = "}";                                          output;  
+  o = "}";                                        output;  
 run;
 
 %hz_gg_treemap(

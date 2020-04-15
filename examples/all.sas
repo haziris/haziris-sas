@@ -15,9 +15,9 @@
 %include "/folders/myfolders/haziris-sas/examples/hz_gg_column_piesales.sas";
 %include "/folders/myfolders/haziris-sas/examples/hz_gg_column_piesales_grouped.sas";
 %include "/folders/myfolders/haziris-sas/examples/hz_gg_column_piesales_stacked.sas";
-%include "/folders/myfolders/haziris-sas/examples/hz_gg_columnn_grouped.sas";
-%include "/folders/myfolders/haziris-sas/examples/hz_gg_columnn_stacked.sas";
-%include "/folders/myfolders/haziris-sas/examples/hz_gg_columnn_stacked_full.sas";
+%include "/folders/myfolders/haziris-sas/examples/hz_gg_column_grouped.sas";
+%include "/folders/myfolders/haziris-sas/examples/hz_gg_column_stacked.sas";
+%include "/folders/myfolders/haziris-sas/examples/hz_gg_column_stacked_full.sas";
 %include "/folders/myfolders/haziris-sas/examples/hz_gg_gantt.sas";
 %include "/folders/myfolders/haziris-sas/examples/hz_gg_gantt_grouping.sas";
 %include "/folders/myfolders/haziris-sas/examples/hz_gg_geo.sas";

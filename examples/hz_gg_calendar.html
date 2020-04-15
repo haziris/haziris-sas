@@ -23,7 +23,7 @@
           numYears = Math.max(...dates) - Math.min(...dates) + 1,
           width    = 0.95 * window.innerWidth,
           cellSize = width / 59,
-          height   = (7 * cellSize + 56)* numYears;
+          height   = 10 * cellSize * numYears;
 
       options.calendar = options.calendar || {};
       options.calendar.cellSize = cellSize ;
