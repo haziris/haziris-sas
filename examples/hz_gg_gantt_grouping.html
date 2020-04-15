@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Gantt Chart</title>
+</head>
+<script src='https://www.gstatic.com/charts/loader.js'></script>
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+  function googleGanttChart( df, options ){
+    google.charts.load('current', {'packages': ['gantt']})
+
+    $('#chart-div')
+        .width(  0.95*window.innerWidth  )
+        .height( 0.95*window.innerHeight )
+
+    google.charts.setOnLoadCallback( chart )
+
+    function chart(){
+      let mapRow = (r => ([
+         r[ 'TaskID'          ],
+         r[ 'TaskName'        ],
+         r[ 'Resource'        ],
+         r[ 'StartDate'       ] != null ? new Date(r['StartDate']) : null,
+         r[ 'EndDate'         ] != null ? new Date(r['EndDate'  ]) : null,
+         r[ 'Duration'        ],
+         r[ 'PercentComplete' ],
+         r[ 'Dependencies'    ]
+      ]))
+
+      let ganttData = df.map( r => mapRow(r) )
+
+      let data =  new google.visualization.DataTable();
+
+      data.addColumn( 'string', 'Task ID'          );
+      data.addColumn( 'string', 'Task Name'        );
+      data.addColumn( 'string', 'Resource'         );
+      data.addColumn( 'date'  , 'Start Date'       );
+      data.addColumn( 'date'  , 'End Date'         );
+      data.addColumn( 'number', 'Duration'         );
+      data.addColumn( 'number', 'Percent Complete' );
+      data.addColumn( 'string', 'Dependencies'     );
+
+      data.addRows(ganttData)
+
+      let chart = new google.visualization.Gantt(document.getElementById('chart-div'));
+
+      chart.draw( data, options );
+    }
+}
+googleGanttChart(
+[{
+  "StartDate":"2014-03-23 00:00:00",
+  "EndDate":"2014-06-20 00:00:00",
+  "TaskID":"2014Spring",
+  "TaskName":"Spring 2014",
+  "Resource":"spring",
+  "PercentComplete":         100},
+{
+  "StartDate":"2014-06-22 00:00:00",
+  "EndDate":"2014-09-20 00:00:00",
+  "TaskID":"2014Summer",
+  "TaskName":"Summer 2014",
+  "Resource":"summer",
+  "PercentComplete":         100},
+{
+  "StartDate":"2014-09-22 00:00:00",
+  "EndDate":"2014-12-20 00:00:00",
+  "TaskID":"2014Autumn",
+  "TaskName":"Autumn 2014",
+  "Resource":"autumn",
+  "PercentComplete":         100},
+{
+  "StartDate":"2014-12-22 00:00:00",
+  "EndDate":"2015-03-21 00:00:00",
+  "TaskID":"2014Winter",
+  "TaskName":"Winter 2014",
+  "Resource":"winter",
+  "PercentComplete":         100},
+{
+  "StartDate":"2015-03-23 00:00:00",
+  "EndDate":"2015-06-20 00:00:00",
+  "TaskID":"2015Spring",
+  "TaskName":"Spring 2015",
+  "Resource":"spring",
+  "PercentComplete":          50},
+{
+  "StartDate":"2015-06-22 00:00:00",
+  "EndDate":"2015-09-20 00:00:00",
+  "TaskID":"2015Summer",
+  "TaskName":"Summer 2015",
+  "Resource":"summer",
+  "PercentComplete":           0},
+{
+  "StartDate":"2015-09-22 00:00:00",
+  "EndDate":"2015-12-20 00:00:00",
+  "TaskID":"2015Autumn",
+  "TaskName":"Autumn 2015",
+  "Resource":"autumn",
+  "PercentComplete":           0},
+{
+  "StartDate":"2015-12-22 00:00:00",
+  "EndDate":"2016-03-21 00:00:00",
+  "TaskID":"2015Winter",
+  "TaskName":"Winter 2015",
+  "Resource":"winter",
+  "PercentComplete":           0},
+{
+  "StartDate":"2014-09-05 00:00:00",
+  "EndDate":"2015-02-01 00:00:00",
+  "TaskID":"Football",
+  "TaskName":"Football Season",
+  "Resource":"sports",
+  "PercentComplete":         100},
+{
+  "StartDate":"2015-03-31 00:00:00",
+  "EndDate":"2015-10-20 00:00:00",
+  "TaskID":"Baseball",
+  "TaskName":"Baseball Season",
+  "Resource":"sports",
+  "PercentComplete":          14},
+{
+  "StartDate":"2014-10-29 00:00:00",
+  "EndDate":"2015-06-20 00:00:00",
+  "TaskID":"Basketball",
+  "TaskName":"Basketball Season",
+  "Resource":"sports",
+  "PercentComplete":          86},
+{
+  "StartDate":"2014-10-09 00:00:00",
+  "EndDate":"2015-06-21 00:00:00",
+  "TaskID":"Hockey",
+  "TaskName":"Hockey Season",
+  "Resource":"sports",
+  "PercentComplete":          89}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>

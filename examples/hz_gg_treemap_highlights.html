@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Timelines Chart</title>
+</head>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleTreemapChart( df, options ){
+
+      google.charts.load('current', {'packages': ['treemap']})
+
+      let columns = Object.keys(df[0])
+
+      let data = [columns].concat(df.map( row => ( columns.map( c => row[c] )) ))
+
+      data = data.map( d => ( d.map( x=> x !== x ? null : x ) ) )
+
+      $('#chart-div')
+          .width(  0.95*window.innerWidth  )
+          .height( 0.95*window.innerHeight )
+      
+      google.charts.setOnLoadCallback( chart )
+
+      function chart(){
+        let chart = new google.visualization.TreeMap(document.getElementById('chart-div'));
+
+        chart.draw( google.visualization.arrayToDataTable( data ), options );
+      }
+    }
+    googleTreemapChart(
+[{
+  "ID":"Shakespeare",
+  "Parent":null,
+  "NumberOfLines":           0},
+{
+  "ID":"Comedies",
+  "Parent":"Shakespeare",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Tragedies",
+  "Parent":"Shakespeare",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Histories",
+  "Parent":"Shakespeare",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"As You Like It",
+  "Parent":"Comedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Adam",
+  "Parent":"As You Like It",
+  "NumberOfLines":          10},
+{
+  "ID":"Amiens",
+  "Parent":"As You Like It",
+  "NumberOfLines":          10},
+{
+  "ID":"Audrey",
+  "Parent":"As You Like It",
+  "NumberOfLines":          12},
+{
+  "ID":"Celia",
+  "Parent":"As You Like It",
+  "NumberOfLines":         108},
+{
+  "ID":"Charles",
+  "Parent":"As You Like It",
+  "NumberOfLines":           8},
+{
+  "ID":"Corin",
+  "Parent":"As You Like It",
+  "NumberOfLines":          24},
+{
+  "ID":"Dennis",
+  "Parent":"As You Like It",
+  "NumberOfLines":           2},
+{
+  "ID":"Duke",
+  "Parent":"As You Like It",
+  "NumberOfLines":          32},
+{
+  "ID":"Frederick",
+  "Parent":"As You Like It",
+  "NumberOfLines":          20},
+{
+  "ID":"Hymen",
+  "Parent":"As You Like It",
+  "NumberOfLines":           1},
+{
+  "ID":"Jaques (lord)",
+  "Parent":"As You Like It",
+  "NumberOfLines":          57},
+{
+  "ID":"Jaques (son)",
+  "Parent":"As You Like It",
+  "NumberOfLines":           2},
+{
+  "ID":"Le Beau",
+  "Parent":"As You Like It",
+  "NumberOfLines":          14},
+{
+  "ID":"Oliver",
+  "Parent":"As You Like It",
+  "NumberOfLines":          37},
+{
+  "ID":"Orlando",
+  "Parent":"As You Like It",
+  "NumberOfLines":         120},
+{
+  "ID":"Phebe",
+  "Parent":"As You Like It",
+  "NumberOfLines":          23},
+{
+  "ID":"Rosalind",
+  "Parent":"As You Like It",
+  "NumberOfLines":         201},
+{
+  "ID":"Silvius",
+  "Parent":"As You Like It",
+  "NumberOfLines":          24},
+{
+  "ID":"Sir Oliver Martext",
+  "Parent":"As You Like It",
+  "NumberOfLines":           3},
+{
+  "ID":"Touchstone",
+  "Parent":"As You Like It",
+  "NumberOfLines":          74},
+{
+  "ID":"William",
+  "Parent":"As You Like It",
+  "NumberOfLines":          11},
+{
+  "ID":"Comedy Of Errors",
+  "Parent":"Comedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Adriana",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           9},
+{
+  "ID":"Aegeon",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           7},
+{
+  "ID":"Aemilia",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           6},
+{
+  "ID":"Angelo",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           1},
+{
+  "ID":"Antipholus of Ephesus",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":          76},
+{
+  "ID":"Antipholus of Syracuse",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":         103},
+{
+  "ID":"Balthazar",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           5},
+{
+  "ID":"Courtezan",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":          11},
+{
+  "ID":"Dromio of Ephesus",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":          63},
+{
+  "ID":"Dromio of Syracuse",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":          99},
+{
+  "ID":"Luce",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           7},
+{
+  "ID":"Luciana",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":          43},
+{
+  "ID":"Pinch",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":           6},
+{
+  "ID":"Solinus",
+  "Parent":"Comedy Of Errors",
+  "NumberOfLines":          22},
+{
+  "ID":"Merchant Of Venice",
+  "Parent":"Comedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Antonio",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          47},
+{
+  "ID":"Balthasar",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           1},
+{
+  "ID":"Bassanio",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          73},
+{
+  "ID":"Duke (of Venice)",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          18},
+{
+  "ID":"Gratiano",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          48},
+{
+  "ID":"Jessica",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          26},
+{
+  "ID":"Launcelot Gobbo",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          44},
+{
+  "ID":"Leonardo",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           2},
+{
+  "ID":"Lorenzo",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          47},
+{
+  "ID":"Nerissa",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          36},
+{
+  "ID":"Old Gobbo",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          19},
+{
+  "ID":"Portia",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":         117},
+{
+  "ID":"Prince of Arragon",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           4},
+{
+  "ID":"Prince of Morocco",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           7},
+{
+  "ID":"Salanio",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          18},
+{
+  "ID":"Salarino",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          27},
+{
+  "ID":"Salerio",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           6},
+{
+  "ID":"Shylock",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":          79},
+{
+  "ID":"Stephano",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           3},
+{
+  "ID":"Tubal",
+  "Parent":"Merchant Of Venice",
+  "NumberOfLines":           8},
+{
+  "ID":"Midsummer Nights Dream",
+  "Parent":"Comedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Bottom",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          59},
+{
+  "ID":"Cobweb",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           4},
+{
+  "ID":"Demetrius",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          48},
+{
+  "ID":"Egeus",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           7},
+{
+  "ID":"Fairy",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           4},
+{
+  "ID":"Flute",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          18},
+{
+  "ID":"Helena",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          36},
+{
+  "ID":"Hermia",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          48},
+{
+  "ID":"Hippolyta",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          14},
+{
+  "ID":"Lysander",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          50},
+{
+  "ID":"Moth",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           2},
+{
+  "ID":"Mustardseed",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           5},
+{
+  "ID":"Oberon",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          29},
+{
+  "ID":"Peaseblossom",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           4},
+{
+  "ID":"Philostrate",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           6},
+{
+  "ID":"Puck",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          33},
+{
+  "ID":"Quince",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          40},
+{
+  "ID":"Snout",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           9},
+{
+  "ID":"Snug",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           4},
+{
+  "ID":"Starveling",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":           7},
+{
+  "ID":"Theseus",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          48},
+{
+  "ID":"Titania",
+  "Parent":"Midsummer Nights Dream",
+  "NumberOfLines":          23},
+{
+  "ID":"Taming Of The Shrew",
+  "Parent":"Comedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Baptista Minola",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          68},
+{
+  "ID":"Bianca",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          29},
+{
+  "ID":"Biondello",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          39},
+{
+  "ID":"Christopher Sly",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          24},
+{
+  "ID":"Curtis",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          20},
+{
+  "ID":"Gremio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          58},
+{
+  "ID":"Grumio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          63},
+{
+  "ID":"Haberdasher",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":           1},
+{
+  "ID":"Hortensio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          70},
+{
+  "ID":"Joseph",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":           1},
+{
+  "ID":"Katherina",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          82},
+{
+  "ID":"Lucentio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          61},
+{
+  "ID":"Nathaniel",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":           4},
+{
+  "ID":"Nicholas",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":           1},
+{
+  "ID":"Peter",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":           2},
+{
+  "ID":"Petruchio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":         158},
+{
+  "ID":"Philip",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":           1},
+{
+  "ID":"Tranio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          90},
+{
+  "ID":"Vincentio",
+  "Parent":"Taming Of The Shrew",
+  "NumberOfLines":          23},
+{
+  "ID":"The Tempest",
+  "Parent":"Comedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Adrian",
+  "Parent":"The Tempest",
+  "NumberOfLines":           9},
+{
+  "ID":"Alonso",
+  "Parent":"The Tempest",
+  "NumberOfLines":          40},
+{
+  "ID":"Antonio, duke of Milan",
+  "Parent":"The Tempest",
+  "NumberOfLines":          57},
+{
+  "ID":"Ariel",
+  "Parent":"The Tempest",
+  "NumberOfLines":          45},
+{
+  "ID":"Caliban",
+  "Parent":"The Tempest",
+  "NumberOfLines":          50},
+{
+  "ID":"Ceres",
+  "Parent":"The Tempest",
+  "NumberOfLines":           4},
+{
+  "ID":"Ferdinand",
+  "Parent":"The Tempest",
+  "NumberOfLines":          31},
+{
+  "ID":"Gonzalo",
+  "Parent":"The Tempest",
+  "NumberOfLines":          52},
+{
+  "ID":"Iris",
+  "Parent":"The Tempest",
+  "NumberOfLines":           4},
+{
+  "ID":"Juno",
+  "Parent":"The Tempest",
+  "NumberOfLines":           2},
+{
+  "ID":"Master",
+  "Parent":"The Tempest",
+  "NumberOfLines":           2},
+{
+  "ID":"Miranda",
+  "Parent":"The Tempest",
+  "NumberOfLines":          50},
+{
+  "ID":"Nymphs",
+  "Parent":"The Tempest",
+  "NumberOfLines":           0},
+{
+  "ID":"Prospero",
+  "Parent":"The Tempest",
+  "NumberOfLines":         114},
+{
+  "ID":"Reapers",
+  "Parent":"The Tempest",
+  "NumberOfLines":           0},
+{
+  "ID":"Sebastian",
+  "Parent":"The Tempest",
+  "NumberOfLines":          67},
+{
+  "ID":"Stephano (Servant to Portia)",
+  "Parent":"The Tempest",
+  "NumberOfLines":          60},
+{
+  "ID":"Trinculo",
+  "Parent":"The Tempest",
+  "NumberOfLines":          39},
+{
+  "ID":"Henry VIII",
+  "Parent":"Histories",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Anne Bullen",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          18},
+{
+  "ID":"Archbishop Cranmer",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          21},
+{
+  "ID":"Bishop Lincoln",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           2},
+{
+  "ID":"Brandon",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           6},
+{
+  "ID":"Capucius",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           5},
+{
+  "ID":"Cardinal Campeius",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          14},
+{
+  "ID":"Cardinal Wolsey",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          79},
+{
+  "ID":"Cromwell",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          21},
+{
+  "ID":"Doctor Butts",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           4},
+{
+  "ID":"Duke of Buckingham",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          26},
+{
+  "ID":"Duke of Norfolk",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          48},
+{
+  "ID":"Duke of Suffolk",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          30},
+{
+  "ID":"Earl of Surrey",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          24},
+{
+  "ID":"First Secretary to Wolsey",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           2},
+{
+  "ID":"Gardiner",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          22},
+{
+  "ID":"Garter",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           1},
+{
+  "ID":"Griffith",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          13},
+{
+  "ID":"King Henry VIII",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          81},
+{
+  "ID":"Lord Abergavenny",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           5},
+{
+  "ID":"Lord Chamberlain",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          38},
+{
+  "ID":"Lord Chancellor",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           7},
+{
+  "ID":"Lord Sands",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          17},
+{
+  "ID":"Old Lady",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          14},
+{
+  "ID":"Patience",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           3},
+{
+  "ID":"Porter (door-keeper of the Council-chamber)",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          10},
+{
+  "ID":"Queen Katharine",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          50},
+{
+  "ID":"Sir Anthony Denny",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           3},
+{
+  "ID":"Sir Henry Guildford",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           1},
+{
+  "ID":"Sir Nicholas Vaux",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           1},
+{
+  "ID":"Sir Thomas Lovell",
+  "Parent":"Henry VIII",
+  "NumberOfLines":          21},
+{
+  "ID":"Surveyor to the Duke of Buckingham",
+  "Parent":"Henry VIII",
+  "NumberOfLines":           9},
+{
+  "ID":"History Of King John",
+  "Parent":"Histories",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Arthur Duke of Bretagne",
+  "Parent":"History Of King John",
+  "NumberOfLines":          23},
+{
+  "ID":"Blanch",
+  "Parent":"History Of King John",
+  "NumberOfLines":           9},
+{
+  "ID":"Cardinal Pandulph",
+  "Parent":"History Of King John",
+  "NumberOfLines":          23},
+{
+  "ID":"Chatillon",
+  "Parent":"History Of King John",
+  "NumberOfLines":           5},
+{
+  "ID":"Constance",
+  "Parent":"History Of King John",
+  "NumberOfLines":          36},
+{
+  "ID":"Essex",
+  "Parent":"History Of King John",
+  "NumberOfLines":           1},
+{
+  "ID":"Faulconbridge",
+  "Parent":"History Of King John",
+  "NumberOfLines":           4},
+{
+  "ID":"Hubert de Burgh",
+  "Parent":"History Of King John",
+  "NumberOfLines":          52},
+{
+  "ID":"James Gurney",
+  "Parent":"History Of King John",
+  "NumberOfLines":           1},
+{
+  "ID":"King John",
+  "Parent":"History Of King John",
+  "NumberOfLines":          95},
+{
+  "ID":"King Phillip",
+  "Parent":"History Of King John",
+  "NumberOfLines":          43},
+{
+  "ID":"Lady Faulconbridge",
+  "Parent":"History Of King John",
+  "NumberOfLines":           5},
+{
+  "ID":"Lewis the Dauphin",
+  "Parent":"History Of King John",
+  "NumberOfLines":          29},
+{
+  "ID":"Lord Bigot",
+  "Parent":"History Of King John",
+  "NumberOfLines":           6},
+{
+  "ID":"Lymoges duke of Austria",
+  "Parent":"History Of King John",
+  "NumberOfLines":          16},
+{
+  "ID":"Melun",
+  "Parent":"History Of King John",
+  "NumberOfLines":           3},
+{
+  "ID":"Pembroke earl of Pembroke",
+  "Parent":"History Of King John",
+  "NumberOfLines":          20},
+{
+  "ID":"Peter of Pomfret",
+  "Parent":"History Of King John",
+  "NumberOfLines":           1},
+{
+  "ID":"Philip the Bastard",
+  "Parent":"History Of King John",
+  "NumberOfLines":          89},
+{
+  "ID":"Prince Henry",
+  "Parent":"History Of King John",
+  "NumberOfLines":           8},
+{
+  "ID":"Queen Elinor",
+  "Parent":"History Of King John",
+  "NumberOfLines":          22},
+{
+  "ID":"Salisbury earl of Salisbury",
+  "Parent":"History Of King John",
+  "NumberOfLines":          36},
+{
+  "ID":"Antony And Cleopatra",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Agrippa",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          28},
+{
+  "ID":"Alexas",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          15},
+{
+  "ID":"Antony",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":         202},
+{
+  "ID":"Canidius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          10},
+{
+  "ID":"Captain",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           1},
+{
+  "ID":"Charmian",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          63},
+{
+  "ID":"Cleopatra",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":         204},
+{
+  "ID":"Demetrius (Friend to Antony)",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           2},
+{
+  "ID":"Dercetas",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           5},
+{
+  "ID":"Diomedes",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           7},
+{
+  "ID":"Dolabella",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          23},
+{
+  "ID":"Domitius Enobarus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":         113},
+{
+  "ID":"Egyptian",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           2},
+{
+  "ID":"Eros",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          27},
+{
+  "ID":"Euphronius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           5},
+{
+  "ID":"Gallus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           1},
+{
+  "ID":"Iras",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          18},
+{
+  "ID":"Lepidus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          30},
+{
+  "ID":"Mardian",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           7},
+{
+  "ID":"Mecaenas",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          16},
+{
+  "ID":"Menas",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          35},
+{
+  "ID":"Menecrates",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           2},
+{
+  "ID":"Octavia",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          13},
+{
+  "ID":"Octavius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          98},
+{
+  "ID":"Philo",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           2},
+{
+  "ID":"Pompey",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          41},
+{
+  "ID":"Proculeius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          10},
+{
+  "ID":"Scarus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          12},
+{
+  "ID":"Seleucus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           3},
+{
+  "ID":"Silius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           3},
+{
+  "ID":"Taurus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           1},
+{
+  "ID":"Thyreus",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":          12},
+{
+  "ID":"Varrius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           1},
+{
+  "ID":"Ventidius",
+  "Parent":"Antony And Cleopatra",
+  "NumberOfLines":           4},
+{
+  "ID":"Coriolanus",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Aedile",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          10},
+{
+  "ID":"Cominius",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          67},
+{
+  "ID":"Coriolanus (Caius Marcius Coriolanus)",
+  "Parent":"Coriolanus",
+  "NumberOfLines":         189},
+{
+  "ID":"Junius Brutus",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          91},
+{
+  "ID":"Lieutenant",
+  "Parent":"Coriolanus",
+  "NumberOfLines":           4},
+{
+  "ID":"Menenius Agrippa",
+  "Parent":"Coriolanus",
+  "NumberOfLines":         162},
+{
+  "ID":"Patrician",
+  "Parent":"Coriolanus",
+  "NumberOfLines":           3},
+{
+  "ID":"Roman",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          10},
+{
+  "ID":"Sicinius Velutus",
+  "Parent":"Coriolanus",
+  "NumberOfLines":         117},
+{
+  "ID":"Titus Lartius",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          23},
+{
+  "ID":"Tullus Aufidius",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          45},
+{
+  "ID":"Valeria",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          14},
+{
+  "ID":"Virgilia",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          26},
+{
+  "ID":"Volsce",
+  "Parent":"Coriolanus",
+  "NumberOfLines":           9},
+{
+  "ID":"Volumnia",
+  "Parent":"Coriolanus",
+  "NumberOfLines":          57},
+{
+  "ID":"Young Coriolanus",
+  "Parent":"Coriolanus",
+  "NumberOfLines":           1},
+{
+  "ID":"Cymbeline",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Arviragus",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          46},
+{
+  "ID":"Belarius",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          58},
+{
+  "ID":"Caius Lucius",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          25},
+{
+  "ID":"Cloten",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          77},
+{
+  "ID":"Cornelius (physician)",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          13},
+{
+  "ID":"Cymbeline, King of Britain",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          81},
+{
+  "ID":"Guiderius",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          62},
+{
+  "ID":"Helen",
+  "Parent":"Cymbeline",
+  "NumberOfLines":           0},
+{
+  "ID":"Iachimo",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          77},
+{
+  "ID":"Imogen",
+  "Parent":"Cymbeline",
+  "NumberOfLines":         118},
+{
+  "ID":"Jupiter",
+  "Parent":"Cymbeline",
+  "NumberOfLines":           1},
+{
+  "ID":"Philario",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          14},
+{
+  "ID":"Pisanio",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          58},
+{
+  "ID":"Posthumus Leonatus",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          77},
+{
+  "ID":"Queen",
+  "Parent":"Cymbeline",
+  "NumberOfLines":          27},
+{
+  "ID":"Roman Captain",
+  "Parent":"Cymbeline",
+  "NumberOfLines":           4},
+{
+  "ID":"Sicilius Leonatus",
+  "Parent":"Cymbeline",
+  "NumberOfLines":           7},
+{
+  "ID":"The Tragedy of Hamlet, Prince of Denmark",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Bernardo",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          19},
+{
+  "ID":"Claudius, King of Denmark",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":         102},
+{
+  "ID":"Cornelius",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":           1},
+{
+  "ID":"Fathers Ghost",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          15},
+{
+  "ID":"Fortinbras",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":           6},
+{
+  "ID":"Francisco",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":           8},
+{
+  "ID":"Gertrude",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          69},
+{
+  "ID":"Guildenstern",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          29},
+{
+  "ID":"Hamlet",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":         358},
+{
+  "ID":"Horatio",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":         109},
+{
+  "ID":"Laertes",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          62},
+{
+  "ID":"Lucianus",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":           0},
+{
+  "ID":"Marcellus",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          37},
+{
+  "ID":"Ophelia",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          58},
+{
+  "ID":"Osric",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          25},
+{
+  "ID":"Polonius",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          86},
+{
+  "ID":"Reynaldo",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          13},
+{
+  "ID":"Rosencrantz",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":          48},
+{
+  "ID":"Voltemand",
+  "Parent":"The Tragedy of Hamlet, Prince of Denmark",
+  "NumberOfLines":           1},
+{
+  "ID":"Julius Caesar",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Antony (Marcus Antonius)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          51},
+{
+  "ID":"Artemidorus of Cnidos",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           4},
+{
+  "ID":"Brutus (Marcus Brutus)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":         194},
+{
+  "ID":"Caesar (Julius Caesar)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          42},
+{
+  "ID":"Calpurnia",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           6},
+{
+  "ID":"Casca",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          39},
+{
+  "ID":"Cassius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":         140},
+{
+  "ID":"Cicero",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           4},
+{
+  "ID":"Cinna",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          11},
+{
+  "ID":"Cinna the Poet",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           8},
+{
+  "ID":"Claudius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           2},
+{
+  "ID":"Clitus",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           8},
+{
+  "ID":"Dardanius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           3},
+{
+  "ID":"Decius Brutus",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          12},
+{
+  "ID":"Flavius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           5},
+{
+  "ID":"Lepidus (Marcus Antonius Lepidus)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           3},
+{
+  "ID":"Ligarius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           5},
+{
+  "ID":"Lucilius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          10},
+{
+  "ID":"Lucius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          24},
+{
+  "ID":"Marullus",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           6},
+{
+  "ID":"Messala",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          20},
+{
+  "ID":"Metellus Cimber",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           5},
+{
+  "ID":"Octavius (Octavius Caesar)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          19},
+{
+  "ID":"Pindarus",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           5},
+{
+  "ID":"Popilius (Popilius Lena)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           2},
+{
+  "ID":"Portia (wife of Brutus)",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          16},
+{
+  "ID":"Publius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           2},
+{
+  "ID":"Strato",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           4},
+{
+  "ID":"Tintinius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":          10},
+{
+  "ID":"Trebonius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           4},
+{
+  "ID":"Varro",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           6},
+{
+  "ID":"Volumnius",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           3},
+{
+  "ID":"Young Cato",
+  "Parent":"Julius Caesar",
+  "NumberOfLines":           3},
+{
+  "ID":"King Lear",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Cordelia",
+  "Parent":"King Lear",
+  "NumberOfLines":          31},
+{
+  "ID":"Curan",
+  "Parent":"King Lear",
+  "NumberOfLines":           4},
+{
+  "ID":"Duke of Albany",
+  "Parent":"King Lear",
+  "NumberOfLines":          58},
+{
+  "ID":"Duke of Burgundy",
+  "Parent":"King Lear",
+  "NumberOfLines":           5},
+{
+  "ID":"Duke of Cornwall",
+  "Parent":"King Lear",
+  "NumberOfLines":          53},
+{
+  "ID":"Earl of Gloucester",
+  "Parent":"King Lear",
+  "NumberOfLines":         118},
+{
+  "ID":"Earl of Kent",
+  "Parent":"King Lear",
+  "NumberOfLines":         127},
+{
+  "ID":"Edgar",
+  "Parent":"King Lear",
+  "NumberOfLines":          98},
+{
+  "ID":"Edmund",
+  "Parent":"King Lear",
+  "NumberOfLines":          79},
+{
+  "ID":"Goneril",
+  "Parent":"King Lear",
+  "NumberOfLines":          53},
+{
+  "ID":"King of France",
+  "Parent":"King Lear",
+  "NumberOfLines":           5},
+{
+  "ID":"Lear",
+  "Parent":"King Lear",
+  "NumberOfLines":         188},
+{
+  "ID":"Oswald",
+  "Parent":"King Lear",
+  "NumberOfLines":          38},
+{
+  "ID":"Regan",
+  "Parent":"King Lear",
+  "NumberOfLines":          73},
+{
+  "ID":"The Tragedy Of Macbeth",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Angus",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           4},
+{
+  "ID":"Banquo",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          33},
+{
+  "ID":"Caithness",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           3},
+{
+  "ID":"Donalbain",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           3},
+{
+  "ID":"Duncan",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          18},
+{
+  "ID":"Fleance",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           2},
+{
+  "ID":"Hecate",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           2},
+{
+  "ID":"Lady Macbeth",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          59},
+{
+  "ID":"Lady Macduff",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          19},
+{
+  "ID":"Lennox",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          21},
+{
+  "ID":"Macbeth",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":         146},
+{
+  "ID":"Macduff",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          59},
+{
+  "ID":"Malcolm",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          40},
+{
+  "ID":"Menteith",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           5},
+{
+  "ID":"Porter",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           4},
+{
+  "ID":"Ross",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          39},
+{
+  "ID":"Seyton",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           5},
+{
+  "ID":"Siward",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          11},
+{
+  "ID":"Son (Macduffs son)",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":          14},
+{
+  "ID":"Young Siward",
+  "Parent":"The Tragedy Of Macbeth",
+  "NumberOfLines":           4},
+{
+  "ID":"The Tragedy Of Othello",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Bianca (Mistress to Cassio)",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          15},
+{
+  "ID":"Brabantio",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          30},
+{
+  "ID":"Cassio",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":         110},
+{
+  "ID":"Desdemona",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":         165},
+{
+  "ID":"Duke of Venice",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          25},
+{
+  "ID":"Emilia",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":         103},
+{
+  "ID":"Gratiano (Brother to Brabantio)",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          20},
+{
+  "ID":"Iago",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":         272},
+{
+  "ID":"Lodovico",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          33},
+{
+  "ID":"Montano",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          24},
+{
+  "ID":"Othello",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":         274},
+{
+  "ID":"Roderigo",
+  "Parent":"The Tragedy Of Othello",
+  "NumberOfLines":          59},
+{
+  "ID":"Romeo And Juliet",
+  "Parent":"Tragedies",
+  "NumberOfLines":NaN
+},
+{
+  "ID":"Abraham",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":           5},
+{
+  "ID":"Balthasar (Servant to Romeo)",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          12},
+{
+  "ID":"Benvolio",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          64},
+{
+  "ID":"Capulet",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          51},
+{
+  "ID":"Friar John",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":           4},
+{
+  "ID":"Friar Laurence",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          55},
+{
+  "ID":"Gregory",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          15},
+{
+  "ID":"Juliet",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":         118},
+{
+  "ID":"Lady Capulet",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          45},
+{
+  "ID":"Lady Montague",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":           2},
+{
+  "ID":"Mercutio",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          62},
+{
+  "ID":"Montague",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          10},
+{
+  "ID":"Paris",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          23},
+{
+  "ID":"Peter (Servant to Juliets Nurse)",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          13},
+{
+  "ID":"Prince Escalus",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          16},
+{
+  "ID":"Romeo",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":         163},
+{
+  "ID":"Sampson",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          20},
+{
+  "ID":"Tybalt",
+  "Parent":"Romeo And Juliet",
+  "NumberOfLines":          17}]
+,
+{
+highlightOnMouseOver: true,
+maxDepth: 1,
+maxPostDepth: 2,
+minHighlightColor: '#8c6bb1',
+midHighlightColor: '#9ebcda',
+maxHighlightColor: '#edf8fb',
+minColor: '#009688',
+midColor: '#f7f7f7',
+maxColor: '#ee8100',
+headerHeight: 15,
+showScale: true,
+useWeightedAverageForAggregation: true
+}
+  )
+  </script>
+ </div>
+</body>
+</html>

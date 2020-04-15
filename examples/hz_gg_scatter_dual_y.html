@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Scatter Chart</title>
+</head>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleScatterChart(current, options, previous){
+
+      google.charts.load('current', {'packages': ['corechart']})
+
+      $('#chart-div')
+          .width(  0.95*window.innerWidth  )
+          .height( 0.95*window.innerHeight )
+
+      google.charts.setOnLoadCallback( arguments.length == 2 ? chart : diffChart )
+
+      function chart(){
+           let columns = Object.keys(current[0])
+         let data = [columns].concat(current.map( row => ( columns.map( c => row[c] )) ))
+        let datag = google.visualization.arrayToDataTable(data);
+        let chart = new google.visualization.ScatterChart(document.getElementById('chart-div'));
+        chart.draw(datag, options);
+      }
+
+      function diffChart(){
+        let chart = new google.visualization.ScatterChart(document.getElementById('chart-div'));
+
+           let columns = Object.keys(current[0])
+         let data = [columns].concat(current.map( row => ( columns.map( c => row[c] )) ))
+        let datacurr = google.visualization.arrayToDataTable(data);
+
+           columns = Object.keys(previous[0])
+         data = [columns].concat(previous.map( row => ( columns.map( c => row[c] )) ))
+        let dataprev = google.visualization.arrayToDataTable(data);
+
+        let diffData = chart.computeDiff(dataprev, datacurr);
+        chart.draw(diffData, options);
+      }
+  }
+
+  googleScatterChart(
+[{
+  "StudentID":           0,
+  "HoursStudied":           0,
+  "FinalGrade":          67},
+{
+  "StudentID":           1,
+  "HoursStudied":           1,
+  "FinalGrade":          88},
+{
+  "StudentID":           2,
+  "HoursStudied":           2,
+  "FinalGrade":          77},
+{
+  "StudentID":           3,
+  "HoursStudied":           3,
+  "FinalGrade":          93},
+{
+  "StudentID":           4,
+  "HoursStudied":           4,
+  "FinalGrade":          85},
+{
+  "StudentID":           5,
+  "HoursStudied":           5,
+  "FinalGrade":          91},
+{
+  "StudentID":           6,
+  "HoursStudied":           6,
+  "FinalGrade":          71},
+{
+  "StudentID":           7,
+  "HoursStudied":           7,
+  "FinalGrade":          78},
+{
+  "StudentID":           8,
+  "HoursStudied":           8,
+  "FinalGrade":          93},
+{
+  "StudentID":           9,
+  "HoursStudied":           9,
+  "FinalGrade":          80},
+{
+  "StudentID":          10,
+  "HoursStudied":          10,
+  "FinalGrade":          82},
+{
+  "StudentID":          11,
+  "HoursStudied":           0,
+  "FinalGrade":          75},
+{
+  "StudentID":          12,
+  "HoursStudied":           5,
+  "FinalGrade":          80},
+{
+  "StudentID":          13,
+  "HoursStudied":           3,
+  "FinalGrade":          90},
+{
+  "StudentID":          14,
+  "HoursStudied":           1,
+  "FinalGrade":          72},
+{
+  "StudentID":          15,
+  "HoursStudied":           5,
+  "FinalGrade":          75},
+{
+  "StudentID":          16,
+  "HoursStudied":           6,
+  "FinalGrade":          68},
+{
+  "StudentID":          17,
+  "HoursStudied":           7,
+  "FinalGrade":          98},
+{
+  "StudentID":          18,
+  "HoursStudied":           3,
+  "FinalGrade":          82},
+{
+  "StudentID":          19,
+  "HoursStudied":           9,
+  "FinalGrade":          94},
+{
+  "StudentID":          20,
+  "HoursStudied":           2,
+  "FinalGrade":          79},
+{
+  "StudentID":          21,
+  "HoursStudied":           2,
+  "FinalGrade":          95},
+{
+  "StudentID":          22,
+  "HoursStudied":           2,
+  "FinalGrade":          86},
+{
+  "StudentID":          23,
+  "HoursStudied":           3,
+  "FinalGrade":          67},
+{
+  "StudentID":          24,
+  "HoursStudied":           4,
+  "FinalGrade":          60},
+{
+  "StudentID":          25,
+  "HoursStudied":           2,
+  "FinalGrade":          80},
+{
+  "StudentID":          26,
+  "HoursStudied":           6,
+  "FinalGrade":          92},
+{
+  "StudentID":          27,
+  "HoursStudied":           2,
+  "FinalGrade":          81},
+{
+  "StudentID":          28,
+  "HoursStudied":           8,
+  "FinalGrade":          79},
+{
+  "StudentID":          29,
+  "HoursStudied":           9,
+  "FinalGrade":          83}]
+,
+{
+series: {
+0: {targetAxisIndex: '0'},
+1: {targetAxisIndex: '1'}
+},
+title: 'Students Final Grades - based on hours studied',
+vAxes: {
+0: {title: 'HoursStudied'},
+1: {title: 'FinalGrade'}
+}
+}
+  )
+  </script>
+ </div>
+</body>
+</html>

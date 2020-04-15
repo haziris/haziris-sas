@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Calendar Chart</title>
+</head>
+<script src='https://www.gstatic.com/charts/loader.js'></script>
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleCalendarChart( df, options ){
+
+      google.charts.load('current', {'packages': ['calendar']})
+
+       let col      = Object.keys(df[0]),
+           data     = [col].concat(df.map( row => ( [ new Date(row[col[0]]+' 00:00:00'), row[col[1]] ] ) )),
+          dates    = data.filter((_,i) => i>0 ).map( r => r[0].getFullYear() ),
+          numYears = Math.max(...dates) - Math.min(...dates) + 1,
+          width    = 0.95 * window.innerWidth,
+          cellSize = width / 59,
+          height   = (7 * cellSize + 56)* numYears;
+
+      options.calendar = options.calendar || {};
+      options.calendar.cellSize = cellSize ;
+
+      $('#chart-div')
+          .width(  width  )
+          .height( height )
+
+      google.charts.setOnLoadCallback( chart )
+
+      function chart(){
+        let chart = new google.visualization.Calendar(document.getElementById('chart-div'));
+
+        chart.draw( google.visualization.arrayToDataTable( data ), options );
+      }
+  }
+  googleCalendarChart(
+[{
+  "stockDate":"2005-12-01",
+  "Open":       89.15},
+{
+  "stockDate":"2005-11-01",
+  "Open":       81.85},
+{
+  "stockDate":"2005-10-03",
+  "Open":       80.22},
+{
+  "stockDate":"2005-09-01",
+  "Open":       80.16},
+{
+  "stockDate":"2005-08-01",
+  "Open":          83},
+{
+  "stockDate":"2005-07-01",
+  "Open":        74.3},
+{
+  "stockDate":"2005-06-01",
+  "Open":       75.57},
+{
+  "stockDate":"2005-05-02",
+  "Open":       76.88},
+{
+  "stockDate":"2005-04-01",
+  "Open":       91.49},
+{
+  "stockDate":"2005-03-01",
+  "Open":       92.64},
+{
+  "stockDate":"2005-02-01",
+  "Open":       93.67},
+{
+  "stockDate":"2005-01-03",
+  "Open":       98.97},
+{
+  "stockDate":"2004-12-01",
+  "Open":        94.5},
+{
+  "stockDate":"2004-11-01",
+  "Open":       89.33},
+{
+  "stockDate":"2004-10-01",
+  "Open":       85.95},
+{
+  "stockDate":"2004-09-01",
+  "Open":       84.05},
+{
+  "stockDate":"2004-08-02",
+  "Open":       86.87},
+{
+  "stockDate":"2004-07-01",
+  "Open":       88.28},
+{
+  "stockDate":"2004-06-01",
+  "Open":          88},
+{
+  "stockDate":"2004-05-03",
+  "Open":       88.13},
+{
+  "stockDate":"2004-04-01",
+  "Open":       91.67},
+{
+  "stockDate":"2004-03-01",
+  "Open":        96.5},
+{
+  "stockDate":"2004-02-02",
+  "Open":       99.15},
+{
+  "stockDate":"2004-01-02",
+  "Open":       92.86},
+{
+  "stockDate":"2003-12-01",
+  "Open":        90.9},
+{
+  "stockDate":"2003-11-03",
+  "Open":        89.9},
+{
+  "stockDate":"2003-10-01",
+  "Open":       88.75},
+{
+  "stockDate":"2003-09-02",
+  "Open":        82.4},
+{
+  "stockDate":"2003-08-01",
+  "Open":       81.15},
+{
+  "stockDate":"2003-07-01",
+  "Open":        81.4},
+{
+  "stockDate":"2003-06-02",
+  "Open":          89},
+{
+  "stockDate":"2003-05-01",
+  "Open":        85.3},
+{
+  "stockDate":"2003-04-01",
+  "Open":        78.5},
+{
+  "stockDate":"2003-03-03",
+  "Open":        78.9},
+{
+  "stockDate":"2003-02-03",
+  "Open":        78.2},
+{
+  "stockDate":"2003-01-02",
+  "Open":        78.8},
+{
+  "stockDate":"2002-12-02",
+  "Open":        88.6},
+{
+  "stockDate":"2002-11-01",
+  "Open":        78.9},
+{
+  "stockDate":"2002-10-01",
+  "Open":        59.2},
+{
+  "stockDate":"2002-09-03",
+  "Open":        74.2},
+{
+  "stockDate":"2002-08-01",
+  "Open":        70.4},
+{
+  "stockDate":"2002-07-01",
+  "Open":       72.01},
+{
+  "stockDate":"2002-06-03",
+  "Open":       80.75},
+{
+  "stockDate":"2002-05-01",
+  "Open":       83.85},
+{
+  "stockDate":"2002-04-01",
+  "Open":         104},
+{
+  "stockDate":"2002-03-01",
+  "Open":        98.6},
+{
+  "stockDate":"2002-02-01",
+  "Open":      107.64},
+{
+  "stockDate":"2002-01-02",
+  "Open":       120.6},
+{
+  "stockDate":"2001-12-03",
+  "Open":       114.8},
+{
+  "stockDate":"2001-11-01",
+  "Open":      107.25},
+{
+  "stockDate":"2001-10-01",
+  "Open":       91.72},
+{
+  "stockDate":"2001-09-04",
+  "Open":      100.15},
+{
+  "stockDate":"2001-08-01",
+  "Open":      105.35},
+{
+  "stockDate":"2001-07-02",
+  "Open":       113.5},
+{
+  "stockDate":"2001-06-01",
+  "Open":       112.5},
+{
+  "stockDate":"2001-05-01",
+  "Open":      115.85},
+{
+  "stockDate":"2001-04-02",
+  "Open":       97.45},
+{
+  "stockDate":"2001-03-01",
+  "Open":        99.3},
+{
+  "stockDate":"2001-02-01",
+  "Open":       112.4},
+{
+  "stockDate":"2001-01-02",
+  "Open":        84.5},
+{
+  "stockDate":"2000-12-01",
+  "Open":       94.44},
+{
+  "stockDate":"2000-11-01",
+  "Open":       98.44},
+{
+  "stockDate":"2000-10-02",
+  "Open":      112.62},
+{
+  "stockDate":"2000-09-01",
+  "Open":      133.06},
+{
+  "stockDate":"2000-08-01",
+  "Open":         112},
+{
+  "stockDate":"2000-07-03",
+  "Open":      108.75},
+{
+  "stockDate":"2000-06-01",
+  "Open":      107.56},
+{
+  "stockDate":"2000-05-01",
+  "Open":       112.5},
+{
+  "stockDate":"2000-04-03",
+  "Open":         120},
+{
+  "stockDate":"2000-03-01",
+  "Open":         102},
+{
+  "stockDate":"2000-02-01",
+  "Open":      112.37},
+{
+  "stockDate":"2000-01-03",
+  "Open":      112.44},
+{
+  "stockDate":"1999-12-01",
+  "Open":      102.56},
+{
+  "stockDate":"1999-11-01",
+  "Open":        98.5},
+{
+  "stockDate":"1999-10-01",
+  "Open":         121},
+{
+  "stockDate":"1999-09-01",
+  "Open":      125.62},
+{
+  "stockDate":"1999-08-02",
+  "Open":         124},
+{
+  "stockDate":"1999-07-01",
+  "Open":         130},
+{
+  "stockDate":"1999-06-01",
+  "Open":      113.62},
+{
+  "stockDate":"1999-05-03",
+  "Open":         208},
+{
+  "stockDate":"1999-04-01",
+  "Open":      177.31},
+{
+  "stockDate":"1999-03-01",
+  "Open":       169.5},
+{
+  "stockDate":"1999-02-01",
+  "Open":       184.5},
+{
+  "stockDate":"1999-01-04",
+  "Open":         185},
+{
+  "stockDate":"1998-12-01",
+  "Open":       163.5},
+{
+  "stockDate":"1998-11-02",
+  "Open":      148.44},
+{
+  "stockDate":"1998-10-01",
+  "Open":      125.06},
+{
+  "stockDate":"1998-09-01",
+  "Open":         113},
+{
+  "stockDate":"1998-08-03",
+  "Open":         134},
+{
+  "stockDate":"1998-07-01",
+  "Open":         116},
+{
+  "stockDate":"1998-06-01",
+  "Open":      117.37},
+{
+  "stockDate":"1998-05-01",
+  "Open":      115.94},
+{
+  "stockDate":"1998-04-01",
+  "Open":      103.87},
+{
+  "stockDate":"1998-03-02",
+  "Open":      104.19},
+{
+  "stockDate":"1998-02-02",
+  "Open":         100},
+{
+  "stockDate":"1998-01-02",
+  "Open":       104.5},
+{
+  "stockDate":"1997-12-01",
+  "Open":         110},
+{
+  "stockDate":"1997-11-03",
+  "Open":       99.12},
+{
+  "stockDate":"1997-10-01",
+  "Open":      106.12},
+{
+  "stockDate":"1997-09-02",
+  "Open":      101.37},
+{
+  "stockDate":"1997-08-01",
+  "Open":       105.5},
+{
+  "stockDate":"1997-07-01",
+  "Open":       90.25},
+{
+  "stockDate":"1997-06-02",
+  "Open":       87.75},
+{
+  "stockDate":"1997-05-01",
+  "Open":       160.5},
+{
+  "stockDate":"1997-04-01",
+  "Open":         137},
+{
+  "stockDate":"1997-03-03",
+  "Open":      143.75},
+{
+  "stockDate":"1997-02-03",
+  "Open":      157.38},
+{
+  "stockDate":"1997-01-02",
+  "Open":      153.75},
+{
+  "stockDate":"1996-12-02",
+  "Open":      159.63},
+{
+  "stockDate":"1996-11-01",
+  "Open":      128.88},
+{
+  "stockDate":"1996-10-01",
+  "Open":         124},
+{
+  "stockDate":"1996-09-03",
+  "Open":      113.25},
+{
+  "stockDate":"1996-08-01",
+  "Open":         108},
+{
+  "stockDate":"1996-07-01",
+  "Open":       99.25},
+{
+  "stockDate":"1996-06-03",
+  "Open":      106.37},
+{
+  "stockDate":"1996-05-01",
+  "Open":      107.75},
+{
+  "stockDate":"1996-04-01",
+  "Open":      112.12},
+{
+  "stockDate":"1996-03-01",
+  "Open":      121.62},
+{
+  "stockDate":"1996-02-01",
+  "Open":      108.75},
+{
+  "stockDate":"1996-01-02",
+  "Open":       91.37},
+{
+  "stockDate":"1995-12-01",
+  "Open":          97},
+{
+  "stockDate":"1995-11-01",
+  "Open":       97.25},
+{
+  "stockDate":"1995-10-02",
+  "Open":          95},
+{
+  "stockDate":"1995-09-01",
+  "Open":      102.75},
+{
+  "stockDate":"1995-08-01",
+  "Open":      109.12},
+{
+  "stockDate":"1995-07-03",
+  "Open":       96.25},
+{
+  "stockDate":"1995-06-01",
+  "Open":        93.5},
+{
+  "stockDate":"1995-05-01",
+  "Open":       93.87},
+{
+  "stockDate":"1995-04-03",
+  "Open":       82.25},
+{
+  "stockDate":"1995-03-01",
+  "Open":       75.12},
+{
+  "stockDate":"1995-02-01",
+  "Open":       72.37},
+{
+  "stockDate":"1995-01-03",
+  "Open":        73.5},
+{
+  "stockDate":"1994-12-01",
+  "Open":       70.62},
+{
+  "stockDate":"1994-11-01",
+  "Open":       74.37},
+{
+  "stockDate":"1994-10-03",
+  "Open":       69.37},
+{
+  "stockDate":"1994-09-01",
+  "Open":       66.87},
+{
+  "stockDate":"1994-08-01",
+  "Open":       61.88},
+{
+  "stockDate":"1994-07-01",
+  "Open":          59},
+{
+  "stockDate":"1994-06-01",
+  "Open":          63},
+{
+  "stockDate":"1994-05-02",
+  "Open":        57.5},
+{
+  "stockDate":"1994-04-04",
+  "Open":          53},
+{
+  "stockDate":"1994-03-01",
+  "Open":       52.88},
+{
+  "stockDate":"1994-02-01",
+  "Open":       56.88},
+{
+  "stockDate":"1994-01-03",
+  "Open":       56.88},
+{
+  "stockDate":"1993-12-01",
+  "Open":       54.75},
+{
+  "stockDate":"1993-11-01",
+  "Open":          46},
+{
+  "stockDate":"1993-10-01",
+  "Open":       42.13},
+{
+  "stockDate":"1993-09-01",
+  "Open":       45.75},
+{
+  "stockDate":"1993-08-02",
+  "Open":       44.38},
+{
+  "stockDate":"1993-07-01",
+  "Open":       49.63},
+{
+  "stockDate":"1993-06-01",
+  "Open":       53.25},
+{
+  "stockDate":"1993-05-03",
+  "Open":       49.13},
+{
+  "stockDate":"1993-04-01",
+  "Open":        51.5},
+{
+  "stockDate":"1993-03-01",
+  "Open":       54.75},
+{
+  "stockDate":"1993-02-01",
+  "Open":          52},
+{
+  "stockDate":"1993-01-04",
+  "Open":       51.75},
+{
+  "stockDate":"1992-12-01",
+  "Open":       68.37},
+{
+  "stockDate":"1992-11-02",
+  "Open":          67},
+{
+  "stockDate":"1992-10-01",
+  "Open":          81},
+{
+  "stockDate":"1992-09-01",
+  "Open":       86.62},
+{
+  "stockDate":"1992-08-03",
+  "Open":        94.5},
+{
+  "stockDate":"1992-07-01",
+  "Open":       97.87},
+{
+  "stockDate":"1992-06-01",
+  "Open":        90.5},
+{
+  "stockDate":"1992-05-01",
+  "Open":       91.25},
+{
+  "stockDate":"1992-04-01",
+  "Open":        83.5},
+{
+  "stockDate":"1992-03-02",
+  "Open":       86.87},
+{
+  "stockDate":"1992-02-03",
+  "Open":          90},
+{
+  "stockDate":"1992-01-02",
+  "Open":          89},
+{
+  "stockDate":"1991-12-02",
+  "Open":       91.12},
+{
+  "stockDate":"1991-11-01",
+  "Open":       98.37},
+{
+  "stockDate":"1991-10-01",
+  "Open":      103.62},
+{
+  "stockDate":"1991-09-03",
+  "Open":       97.75},
+{
+  "stockDate":"1991-08-01",
+  "Open":         101},
+{
+  "stockDate":"1991-07-01",
+  "Open":       97.62},
+{
+  "stockDate":"1991-06-03",
+  "Open":         106},
+{
+  "stockDate":"1991-05-01",
+  "Open":       102.5},
+{
+  "stockDate":"1991-04-01",
+  "Open":      113.87},
+{
+  "stockDate":"1991-03-01",
+  "Open":      128.25},
+{
+  "stockDate":"1991-02-01",
+  "Open":       126.5},
+{
+  "stockDate":"1991-01-02",
+  "Open":      112.87},
+{
+  "stockDate":"1990-12-03",
+  "Open":       114.5},
+{
+  "stockDate":"1990-11-01",
+  "Open":      105.37},
+{
+  "stockDate":"1990-10-01",
+  "Open":      107.12},
+{
+  "stockDate":"1990-09-04",
+  "Open":         101},
+{
+  "stockDate":"1990-08-01",
+  "Open":      111.87},
+{
+  "stockDate":"1990-07-02",
+  "Open":       117.5},
+{
+  "stockDate":"1990-06-01",
+  "Open":       120.5},
+{
+  "stockDate":"1990-05-01",
+  "Open":       109.5},
+{
+  "stockDate":"1990-04-02",
+  "Open":      105.12},
+{
+  "stockDate":"1990-03-01",
+  "Open":      103.75},
+{
+  "stockDate":"1990-02-01",
+  "Open":       98.62},
+{
+  "stockDate":"1990-01-02",
+  "Open":       94.75},
+{
+  "stockDate":"1989-12-01",
+  "Open":       97.62},
+{
+  "stockDate":"1989-11-01",
+  "Open":      100.25},
+{
+  "stockDate":"1989-10-02",
+  "Open":      109.37},
+{
+  "stockDate":"1989-09-01",
+  "Open":      116.87},
+{
+  "stockDate":"1989-08-01",
+  "Open":       115.5},
+{
+  "stockDate":"1989-07-03",
+  "Open":       112.5},
+{
+  "stockDate":"1989-06-01",
+  "Open":       109.5},
+{
+  "stockDate":"1989-05-01",
+  "Open":         113},
+{
+  "stockDate":"1989-04-03",
+  "Open":      109.25},
+{
+  "stockDate":"1989-03-01",
+  "Open":      122.12},
+{
+  "stockDate":"1989-02-01",
+  "Open":      129.75},
+{
+  "stockDate":"1989-01-03",
+  "Open":      121.87},
+{
+  "stockDate":"1988-12-01",
+  "Open":      118.37},
+{
+  "stockDate":"1988-11-01",
+  "Open":      122.87},
+{
+  "stockDate":"1988-10-03",
+  "Open":      115.12},
+{
+  "stockDate":"1988-09-01",
+  "Open":      111.12},
+{
+  "stockDate":"1988-08-01",
+  "Open":         126},
+{
+  "stockDate":"1988-07-01",
+  "Open":      127.75},
+{
+  "stockDate":"1988-06-01",
+  "Open":         113},
+{
+  "stockDate":"1988-05-02",
+  "Open":      113.62},
+{
+  "stockDate":"1988-04-04",
+  "Open":       107.5},
+{
+  "stockDate":"1988-03-01",
+  "Open":      117.87},
+{
+  "stockDate":"1988-02-01",
+  "Open":      112.75},
+{
+  "stockDate":"1988-01-04",
+  "Open":         117},
+{
+  "stockDate":"1987-12-01",
+  "Open":       112.5},
+{
+  "stockDate":"1987-11-02",
+  "Open":         121},
+{
+  "stockDate":"1987-10-01",
+  "Open":      151.25},
+{
+  "stockDate":"1987-09-01",
+  "Open":      168.63},
+{
+  "stockDate":"1987-08-03",
+  "Open":       159.5},
+{
+  "stockDate":"1987-07-01",
+  "Open":      162.88},
+{
+  "stockDate":"1987-06-01",
+  "Open":         161},
+{
+  "stockDate":"1987-05-01",
+  "Open":         160},
+{
+  "stockDate":"1987-04-01",
+  "Open":         149},
+{
+  "stockDate":"1987-03-02",
+  "Open":       139.5},
+{
+  "stockDate":"1987-02-02",
+  "Open":      128.25},
+{
+  "stockDate":"1987-01-02",
+  "Open":         121},
+{
+  "stockDate":"1986-12-01",
+  "Open":       126.5},
+{
+  "stockDate":"1986-11-03",
+  "Open":         124},
+{
+  "stockDate":"1986-10-01",
+  "Open":      134.88},
+{
+  "stockDate":"1986-09-02",
+  "Open":      138.88},
+{
+  "stockDate":"1986-08-01",
+  "Open":      132.63}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Sankey Chart</title>
+</head>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleSankeyChart( df, options ){
+
+      google.charts.load('current', {'packages': ['sankey']})
+
+      $('#chart-div')
+          .width(  0.95*window.innerWidth  )
+          .height( 0.95*window.innerHeight )
+      
+      google.charts.setOnLoadCallback( chart )
+
+         let columns = Object.keys(df[0])
+
+       let data = [columns].concat(df.map( row => ( columns.map( c => row[c] )) ))
+
+      function chart(){
+        let chart = new google.visualization.Sankey(document.getElementById('chart-div'));
+
+        chart.draw( google.visualization.arrayToDataTable( data ), options );
+      }
+  }
+  googleSankeyChart(
+[{
+  "From":"A",
+  "To":"X",
+  "Weight":           5},
+{
+  "From":"A",
+  "To":"Y",
+  "Weight":           7},
+{
+  "From":"A",
+  "To":"Z",
+  "Weight":           6},
+{
+  "From":"B",
+  "To":"X",
+  "Weight":           2},
+{
+  "From":"B",
+  "To":"Y",
+  "Weight":           9},
+{
+  "From":"B",
+  "To":"Z",
+  "Weight":           4}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>

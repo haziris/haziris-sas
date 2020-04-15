@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Sankey Chart</title>
+</head>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleSankeyChart( df, options ){
+
+      google.charts.load('current', {'packages': ['sankey']})
+
+      $('#chart-div')
+          .width(  0.95*window.innerWidth  )
+          .height( 0.95*window.innerHeight )
+      
+      google.charts.setOnLoadCallback( chart )
+
+         let columns = Object.keys(df[0])
+
+       let data = [columns].concat(df.map( row => ( columns.map( c => row[c] )) ))
+
+      function chart(){
+        let chart = new google.visualization.Sankey(document.getElementById('chart-div'));
+
+        chart.draw( google.visualization.arrayToDataTable( data ), options );
+      }
+  }
+  googleSankeyChart(
+[{
+  "From":"Brazil",
+  "To":"Portugal",
+  "Weight":           5},
+{
+  "From":"Brazil",
+  "To":"France",
+  "Weight":           1},
+{
+  "From":"Brazil",
+  "To":"Spain",
+  "Weight":           1},
+{
+  "From":"Brazil",
+  "To":"England",
+  "Weight":           1},
+{
+  "From":"Canada",
+  "To":"Portugal",
+  "Weight":           1},
+{
+  "From":"Canada",
+  "To":"France",
+  "Weight":           5},
+{
+  "From":"Canada",
+  "To":"England",
+  "Weight":           1},
+{
+  "From":"Mexico",
+  "To":"Portugal",
+  "Weight":           1},
+{
+  "From":"Mexico",
+  "To":"France",
+  "Weight":           1},
+{
+  "From":"Mexico",
+  "To":"Spain",
+  "Weight":           5},
+{
+  "From":"Mexico",
+  "To":"England",
+  "Weight":           1},
+{
+  "From":"USA",
+  "To":"Portugal",
+  "Weight":           1},
+{
+  "From":"USA",
+  "To":"France",
+  "Weight":           1},
+{
+  "From":"USA",
+  "To":"Spain",
+  "Weight":           1},
+{
+  "From":"USA",
+  "To":"England",
+  "Weight":           5},
+{
+  "From":"Portugal",
+  "To":"Angola",
+  "Weight":           2},
+{
+  "From":"Portugal",
+  "To":"Senegal",
+  "Weight":           1},
+{
+  "From":"Portugal",
+  "To":"Morocco",
+  "Weight":           1},
+{
+  "From":"Portugal",
+  "To":"South Africa",
+  "Weight":           3},
+{
+  "From":"France",
+  "To":"Angola",
+  "Weight":           1},
+{
+  "From":"France",
+  "To":"Senegal",
+  "Weight":           3},
+{
+  "From":"France",
+  "To":"Mali",
+  "Weight":           3},
+{
+  "From":"France",
+  "To":"Morocco",
+  "Weight":           3},
+{
+  "From":"France",
+  "To":"South Africa",
+  "Weight":           1},
+{
+  "From":"Spain",
+  "To":"Senegal",
+  "Weight":           1},
+{
+  "From":"Spain",
+  "To":"Morocco",
+  "Weight":           3},
+{
+  "From":"Spain",
+  "To":"South Africa",
+  "Weight":           1},
+{
+  "From":"England",
+  "To":"Angola",
+  "Weight":           1},
+{
+  "From":"England",
+  "To":"Senegal",
+  "Weight":           1},
+{
+  "From":"England",
+  "To":"Morocco",
+  "Weight":           2},
+{
+  "From":"England",
+  "To":"South Africa",
+  "Weight":           7},
+{
+  "From":"South Africa",
+  "To":"China",
+  "Weight":           5},
+{
+  "From":"South Africa",
+  "To":"India",
+  "Weight":           1},
+{
+  "From":"South Africa",
+  "To":"Japan",
+  "Weight":           3},
+{
+  "From":"Angola",
+  "To":"China",
+  "Weight":           5},
+{
+  "From":"Angola",
+  "To":"India",
+  "Weight":           1},
+{
+  "From":"Angola",
+  "To":"Japan",
+  "Weight":           3},
+{
+  "From":"Senegal",
+  "To":"China",
+  "Weight":           5},
+{
+  "From":"Senegal",
+  "To":"India",
+  "Weight":           1},
+{
+  "From":"Senegal",
+  "To":"Japan",
+  "Weight":           3},
+{
+  "From":"Mali",
+  "To":"China",
+  "Weight":           5},
+{
+  "From":"Mali",
+  "To":"India",
+  "Weight":           1},
+{
+  "From":"Mali",
+  "To":"Japan",
+  "Weight":           3},
+{
+  "From":"Morocco",
+  "To":"China",
+  "Weight":           5},
+{
+  "From":"Morocco",
+  "To":"India",
+  "Weight":           1},
+{
+  "From":"Morocco",
+  "To":"Japan",
+  "Weight":           3}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>

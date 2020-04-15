@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Material Line Chart</title>
+</head>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleMaterialLineChart( df, options ){
+
+      google.charts.load('current', {'packages': ['line']})
+
+      $('#chart-div')
+          .width(  0.95*window.innerWidth  )
+          .height( 0.95*window.innerHeight )
+      
+      google.charts.setOnLoadCallback( chart )
+
+         let columns = Object.keys(df[0])
+
+       let data = [columns].concat(df.map( row => ( columns.map( c => row[c] )) ))
+
+      function chart(){
+        let chart = new google.charts.Line(document.getElementById('chart-div'));
+
+        chart.draw( google.visualization.arrayToDataTable( data ), options );
+      }
+  }
+  googleMaterialLineChart(
+[{
+  "Day":           1,
+  "GuardiansOfTheGalaxy":        37.8,
+  "TheAvengers":        80.8,
+  "TransformersAgeOfExtinction":        41.8},
+{
+  "Day":           2,
+  "GuardiansOfTheGalaxy":        30.9,
+  "TheAvengers":        69.5,
+  "TransformersAgeOfExtinction":        32.4},
+{
+  "Day":           3,
+  "GuardiansOfTheGalaxy":        25.4,
+  "TheAvengers":          57,
+  "TransformersAgeOfExtinction":        25.7},
+{
+  "Day":           4,
+  "GuardiansOfTheGalaxy":        11.7,
+  "TheAvengers":        18.8,
+  "TransformersAgeOfExtinction":        10.5},
+{
+  "Day":           5,
+  "GuardiansOfTheGalaxy":        11.9,
+  "TheAvengers":        17.6,
+  "TransformersAgeOfExtinction":        10.4},
+{
+  "Day":           6,
+  "GuardiansOfTheGalaxy":         8.8,
+  "TheAvengers":        13.6,
+  "TransformersAgeOfExtinction":         7.7},
+{
+  "Day":           7,
+  "GuardiansOfTheGalaxy":         7.6,
+  "TheAvengers":        12.3,
+  "TransformersAgeOfExtinction":         9.6},
+{
+  "Day":           8,
+  "GuardiansOfTheGalaxy":        12.3,
+  "TheAvengers":        29.2,
+  "TransformersAgeOfExtinction":        10.6},
+{
+  "Day":           9,
+  "GuardiansOfTheGalaxy":        16.9,
+  "TheAvengers":        42.9,
+  "TransformersAgeOfExtinction":        14.8},
+{
+  "Day":          10,
+  "GuardiansOfTheGalaxy":        12.8,
+  "TheAvengers":        30.9,
+  "TransformersAgeOfExtinction":        11.6},
+{
+  "Day":          11,
+  "GuardiansOfTheGalaxy":         5.3,
+  "TheAvengers":         7.9,
+  "TransformersAgeOfExtinction":         4.7},
+{
+  "Day":          12,
+  "GuardiansOfTheGalaxy":         6.6,
+  "TheAvengers":         8.4,
+  "TransformersAgeOfExtinction":         5.2},
+{
+  "Day":          13,
+  "GuardiansOfTheGalaxy":         4.8,
+  "TheAvengers":         6.3,
+  "TransformersAgeOfExtinction":         3.6},
+{
+  "Day":          14,
+  "GuardiansOfTheGalaxy":         4.2,
+  "TheAvengers":         6.2,
+  "TransformersAgeOfExtinction":         3.4}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>

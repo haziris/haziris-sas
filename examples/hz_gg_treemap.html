@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Timelines Chart</title>
+</head>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+    function googleTreemapChart( df, options ){
+
+      google.charts.load('current', {'packages': ['treemap']})
+
+      let columns = Object.keys(df[0])
+
+      let data = [columns].concat(df.map( row => ( columns.map( c => row[c] )) ))
+
+      data = data.map( d => ( d.map( x=> x !== x ? null : x ) ) )
+
+      $('#chart-div')
+          .width(  0.95*window.innerWidth  )
+          .height( 0.95*window.innerHeight )
+      
+      google.charts.setOnLoadCallback( chart )
+
+      function chart(){
+        let chart = new google.visualization.TreeMap(document.getElementById('chart-div'));
+
+        chart.draw( google.visualization.arrayToDataTable( data ), options );
+      }
+    }
+    googleTreemapChart(
+[{
+  "Location":"Global",
+  "Parent":null,
+  "MarketTradeVolume":           0,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"America",
+  "Parent":"Global",
+  "MarketTradeVolume":           0,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"Europe",
+  "Parent":"Global",
+  "MarketTradeVolume":           0,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"Asia",
+  "Parent":"Global",
+  "MarketTradeVolume":           0,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"Australia",
+  "Parent":"Global",
+  "MarketTradeVolume":           0,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"Africa",
+  "Parent":"Global",
+  "MarketTradeVolume":           0,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"Brazil",
+  "Parent":"America",
+  "MarketTradeVolume":          11,
+  "MarketIncreaseDecrease":          10},
+{
+  "Location":"USA",
+  "Parent":"America",
+  "MarketTradeVolume":          52,
+  "MarketIncreaseDecrease":          31},
+{
+  "Location":"Mexico",
+  "Parent":"America",
+  "MarketTradeVolume":          24,
+  "MarketIncreaseDecrease":          12},
+{
+  "Location":"Canada",
+  "Parent":"America",
+  "MarketTradeVolume":          16,
+  "MarketIncreaseDecrease":         -23},
+{
+  "Location":"France",
+  "Parent":"Europe",
+  "MarketTradeVolume":          42,
+  "MarketIncreaseDecrease":         -11},
+{
+  "Location":"Germany",
+  "Parent":"Europe",
+  "MarketTradeVolume":          31,
+  "MarketIncreaseDecrease":          -2},
+{
+  "Location":"Sweden",
+  "Parent":"Europe",
+  "MarketTradeVolume":          22,
+  "MarketIncreaseDecrease":         -13},
+{
+  "Location":"Italy",
+  "Parent":"Europe",
+  "MarketTradeVolume":          17,
+  "MarketIncreaseDecrease":           4},
+{
+  "Location":"UK",
+  "Parent":"Europe",
+  "MarketTradeVolume":          21,
+  "MarketIncreaseDecrease":          -5},
+{
+  "Location":"China",
+  "Parent":"Asia",
+  "MarketTradeVolume":          36,
+  "MarketIncreaseDecrease":           4},
+{
+  "Location":"Japan",
+  "Parent":"Asia",
+  "MarketTradeVolume":          20,
+  "MarketIncreaseDecrease":         -12},
+{
+  "Location":"India",
+  "Parent":"Asia",
+  "MarketTradeVolume":          40,
+  "MarketIncreaseDecrease":          63},
+{
+  "Location":"Laos",
+  "Parent":"Asia",
+  "MarketTradeVolume":           4,
+  "MarketIncreaseDecrease":          34},
+{
+  "Location":"Mongolia",
+  "Parent":"Asia",
+  "MarketTradeVolume":           1,
+  "MarketIncreaseDecrease":          -5},
+{
+  "Location":"Israel",
+  "Parent":"Asia",
+  "MarketTradeVolume":          12,
+  "MarketIncreaseDecrease":          24},
+{
+  "Location":"Iran",
+  "Parent":"Asia",
+  "MarketTradeVolume":          18,
+  "MarketIncreaseDecrease":          13},
+{
+  "Location":"Pakistan",
+  "Parent":"Asia",
+  "MarketTradeVolume":          11,
+  "MarketIncreaseDecrease":         -52},
+{
+  "Location":"Egypt",
+  "Parent":"Africa",
+  "MarketTradeVolume":          21,
+  "MarketIncreaseDecrease":           0},
+{
+  "Location":"S. Africa",
+  "Parent":"Africa",
+  "MarketTradeVolume":          30,
+  "MarketIncreaseDecrease":          43},
+{
+  "Location":"Sudan",
+  "Parent":"Africa",
+  "MarketTradeVolume":          12,
+  "MarketIncreaseDecrease":           2},
+{
+  "Location":"Congo",
+  "Parent":"Africa",
+  "MarketTradeVolume":          10,
+  "MarketIncreaseDecrease":          12},
+{
+  "Location":"Zaire",
+  "Parent":"Africa",
+  "MarketTradeVolume":           8,
+  "MarketIncreaseDecrease":          10}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
+  <title>Haziris: Google Gantt Chart</title>
+</head>
+<script src='https://www.gstatic.com/charts/loader.js'></script>
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+
+<body>
+ <div id='chart-div'></div>
+  <script>
+  function googleGanttChart( df, options ){
+    google.charts.load('current', {'packages': ['gantt']})
+
+    $('#chart-div')
+        .width(  0.95*window.innerWidth  )
+        .height( 0.95*window.innerHeight )
+
+    google.charts.setOnLoadCallback( chart )
+
+    function chart(){
+      let mapRow = (r => ([
+         r[ 'TaskID'          ],
+         r[ 'TaskName'        ],
+         r[ 'Resource'        ],
+         r[ 'StartDate'       ] != null ? new Date(r['StartDate']) : null,
+         r[ 'EndDate'         ] != null ? new Date(r['EndDate'  ]) : null,
+         r[ 'Duration'        ],
+         r[ 'PercentComplete' ],
+         r[ 'Dependencies'    ]
+      ]))
+
+      let ganttData = df.map( r => mapRow(r) )
+
+      let data =  new google.visualization.DataTable();
+
+      data.addColumn( 'string', 'Task ID'          );
+      data.addColumn( 'string', 'Task Name'        );
+      data.addColumn( 'string', 'Resource'         );
+      data.addColumn( 'date'  , 'Start Date'       );
+      data.addColumn( 'date'  , 'End Date'         );
+      data.addColumn( 'number', 'Duration'         );
+      data.addColumn( 'number', 'Percent Complete' );
+      data.addColumn( 'string', 'Dependencies'     );
+
+      data.addRows(ganttData)
+
+      let chart = new google.visualization.Gantt(document.getElementById('chart-div'));
+
+      chart.draw( data, options );
+    }
+}
+googleGanttChart(
+[{
+  "StartDate":"2015-01-01 00:00:00",
+  "EndDate":"2015-01-05 00:00:00",
+  "TaskID":"Research",
+  "TaskName":"Find sources",
+  "Days":           4,
+  "PercentComplete":         100,
+  "Dependencies":null,
+  "Duration":   345600000},
+{
+  "StartDate":"2015-01-06 00:00:00",
+  "EndDate":"2015-01-09 00:00:00",
+  "TaskID":"Write",
+  "TaskName":"Write paper",
+  "Days":           3,
+  "PercentComplete":          25,
+  "Dependencies":"esearch,Outline",
+  "Duration":   259200000},
+{
+  "StartDate":"2015-01-06 00:00:00",
+  "EndDate":"2015-01-07 00:00:00",
+  "TaskID":"Cite",
+  "TaskName":"Create bibliography",
+  "Days":           1,
+  "PercentComplete":          20,
+  "Dependencies":"esearch",
+  "Duration":    86400000},
+{
+  "StartDate":"2015-01-09 00:00:00",
+  "EndDate":"2015-01-10 00:00:00",
+  "TaskID":"Complete",
+  "TaskName":"Hand in paper",
+  "Days":           1,
+  "PercentComplete":           0,
+  "Dependencies":"ite,Write",
+  "Duration":    86400000},
+{
+  "StartDate":"2015-01-05 00:00:00",
+  "EndDate":"2015-01-06 00:00:00",
+  "TaskID":"Outline",
+  "TaskName":"Outline paper",
+  "Days":           1,
+  "PercentComplete":         100,
+  "Dependencies":"esearch",
+  "Duration":    86400000}]
+,{}
+  )
+  </script>
+ </div>
+</body>
+</html>
