@@ -4,7 +4,15 @@ Visualizations for SAS
 - [Wiki](https://github.com/haziris/haziris-sas/wiki)
 
 ## How to use
-Clone this repository to a folder and include in SAS program like the example below for Google charts
+Clone this repository to a folder and include in SAS program like the example below for Google charts.
+
+Alternately, you can also read macros from this repository directly using a url fileref as follows
+
+```sas
+filename hzggmacr url "https://raw.githubusercontent.com/haziris/haziris-sas/master/macros/haziris_google.sas";
+
+%include hzggmacr;
+```
 
 ### Google Charts
 The macros in `haziris_google.sas` provides SAS code to create HTML files with Google Charts from SAS datasets.
